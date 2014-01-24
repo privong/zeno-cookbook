@@ -114,8 +114,12 @@ Zeno contains a suite of to assist in analysing the snapshots produced by simula
 cat s001b_0?00.dat | snapsift - - sieve='type==0x42' | snaptrak - centers.dat group='i%(n/2)<512 ? (i < n/2 ? 1 : 2) : 0'
 \end{verbatim}
 
-Breaking apart this example, the pipeline first loads a subset of snapshots with the s001b prefix, then extracts only those particles with a BodyType tag equal to 0x42 (in this case, corresponding to the stellar bulge). These bulge particles are then passed to the snaptrak program which computes the (x,y,z) coordinates as well as the 3D velocity and accelerations of the center. The group argument specifies that it should only include the first 512 particles from each bulge (the data file is set up so the most tightly bound particles are listed first in the array). The results are written to a Zeno structured file called ``centers.dat''. This file can then be converted to ascii using the ``snapascii'' program.
+Breaking apart this example, the pipeline first loads a subset of snapshots with the s001b prefix, then extracts only those particles with a BodyType tag equal to 0x42 (in this case, corresponding to the stellar bulge). These bulge particles are then passed to the snaptrak program which computes the (x,y,z) coordinates as well as the 3D velocity and accelerations of the center. The group argument specifies that it should only include the first 512 particles from each bulge (the data file is set up so the most tightly bound particles are listed first in the array). The results are written to a Zeno structured file called ``centers.dat''. This file can then be converted to ascii using the \texttt{snapascii} program.
 
-\subsection{
+\subsection{Visualizing a Simulation Snapshot}
+
+The \texttt{snapview} program takes an input snapshot and displays it in an interactive viewer. 
+
+Multiple snapshots can be passed to \texttt{snapview} at a time; a single snapshot can be displayed and the user can step through the sequence of snapshots using the spacebar. This can be useful for obtaining a quick look at the dynamical evolution of the system. Color-coding can be added for either the line-of-sight doppler motions (dopcolor=true) or via the use of the ``colordata'' argument (e.g., ``colordata=uint'' utilizes the Uinternal values to colorize particles).
 
 \end{document}
